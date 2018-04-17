@@ -36,7 +36,7 @@ while again=="Y"
   end
 
   Game.new(player1, player2).play
-  puts "Play again (Y or N)"
+  puts "Play again (Y or N)?"
   again = gets.strip.upcase
 end
 

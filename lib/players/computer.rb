@@ -6,9 +6,9 @@ module Players
     # best next move.
     def move (board)
       # get current winning combination options
-      opponent = token=="X" ? "O" : "X"
-      my_winning_combinations = find_winning_combinations(board,token, opponent)
-      opponent_winning_combinations = find_winning_combinations(board, opponent, token)
+      opponent = @token=="X" ? "O" : "X"
+      my_winning_combinations = find_winning_combinations(board,@token, opponent)
+      opponent_winning_combinations = find_winning_combinations(board, opponent, @token)
       # Can I win in one move? or can opponent?  If so, that is the move to make
       next_move = find_win(board,my_winning_combinations,token) || find_win(board,opponent_winning_combinations,opponent)
       # if no one can win right now, find best choice out of the winning combinations
@@ -28,9 +28,9 @@ module Players
 
     # determine if there is a winning move for token in current board.
     # Returns board index of that move or nil
-    def find_win (board, combinations, token)
+    def find_win (board, combinations, check_token)
       win_combo = combinations.find do | combo |
-        combo.count {| position | board.cells[position] == token} ==2
+        combo.count {| position | board.cells[position] == check_token} ==2
       end
       return win_combo ?  win_combo.find { | position | !board.taken?(position+1) } : nil
     end

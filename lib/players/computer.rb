@@ -13,8 +13,8 @@ module Players
       next_move = find_win(board,my_winning_combinations,token) || find_win(board,opponent_winning_combinations,opponent)
       # if no one can win right now, find best choice out of the winning combinations
       next_move = best_choice(board,my_winning_combinations) if !next_move
-      # next_move is computed as board.cells index.  return the corresponding board position
-      next_move+1
+      # next_move is computed as board.cells index.  return the corresponding board position as string 
+      next_move+1.to_s
     end
 
     private
@@ -38,7 +38,7 @@ module Players
     # find the best choice.  Keeping it simple - best choice is just the position that
     # shows up the most in the current winning combinations
     def best_choice (board, combinations)
-      # counts array will contain how many times each available cell index is
+      # counts array will contain how many times each available cell index occurs
       # in the current winning combinations (if cell is taken, corresponding count is 0)
       counts = [*0..8].map do |val|
         index_count = 0

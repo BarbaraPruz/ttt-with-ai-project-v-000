@@ -40,6 +40,7 @@ module Players
     def best_choice (board, combinations)
       # counts array will contain how many times each available cell index occurs
       # in the current winning combinations (if cell is taken, corresponding count is 0)
+      # This approach results in a reasonable best choice almost all of the time.
       counts = [*0..8].map do |val|
         index_count = 0
         if !board.taken?(val+1)

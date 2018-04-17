@@ -13,8 +13,8 @@ module Players
       next_move = find_win(board,my_winning_combinations,token) || find_win(board,opponent_winning_combinations,opponent)
       # if no one can win right now, find best choice out of the winning combinations
       next_move = best_choice(board,my_winning_combinations) if !next_move
-      # next_move is computed as board.cells index.  return the corresponding board position as string 
-      next_move+1.to_s
+      # next_move is computed as board.cells index.  return the corresponding board position as string
+      (next_move+1).to_s
     end
 
     private
